@@ -11,11 +11,9 @@ interface Props {
 export function NextDays({ data }: Props) {
   return (
     <View style={styles.container}>
-      {
-        data.map((day) => (
-          <Day key={day.day} data={day} />
-        ))
-      }
+      {data.map((day) => (
+        <Day key={day.day} data={day} />
+      ))}
     </View>
   );
 }

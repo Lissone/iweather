@@ -4,8 +4,14 @@ import { ScrollView, View } from 'react-native';
 import { styles } from './styles';
 
 import { useCity } from '@hooks/useCity';
-import { CityProps, getCityByNameService } from '@services/getCityByNameService';
-import { WeatherResponseProps, getWeatherByCityService } from '@services/getWeatherByCityService';
+import {
+  CityProps,
+  getCityByNameService,
+} from '@services/getCityByNameService';
+import {
+  WeatherResponseProps,
+  getWeatherByCityService,
+} from '@services/getWeatherByCityService';
 
 import { Loading } from '@components/Loading';
 import { NextDays } from '@components/NextDays';
@@ -18,7 +24,9 @@ export function Dashboard() {
   const [isSearching, setIsSearching] = useState(false);
   const [cities, setCities] = useState<CityProps[]>([]);
   const [isWeatherLoading, setWeatherIsLoading] = useState(true);
-  const [weather, setWeather] = useState<WeatherResponseProps>({} as WeatherResponseProps);
+  const [weather, setWeather] = useState<WeatherResponseProps>(
+    {} as WeatherResponseProps,
+  );
 
   const { city, handleChanceCity, cityIsLoading } = useCity();
 
@@ -56,7 +64,7 @@ export function Dashboard() {
       return;
     }
 
-    getCities(search)
+    getCities(search);
     const debounce = setTimeout(() => getCities(search), 500);
 
     return () => clearInterval(debounce);
@@ -64,6 +72,7 @@ export function Dashboard() {
 
   useEffect(() => {
     getWeatherDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city]);
 
   if (isWeatherLoading || cityIsLoading || !city) {
@@ -83,7 +92,10 @@ export function Dashboard() {
 
       <WeatherToday city={city.name} weather={weather.today.weather} />
 
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.scroll}
+        showsVerticalScrollIndicator={false}
+      >
         <WeatherDetails data={weather.today.details} />
         <NextDays data={weather.nextDays} />
       </ScrollView>

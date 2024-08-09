@@ -24,5 +24,5 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.gray_600,
     backgroundColor: theme.colors.gray_500,
-  }
+  },
 });

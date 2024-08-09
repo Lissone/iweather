@@ -1,11 +1,11 @@
-import dayjs from "dayjs";
-import { api } from "./api";
-import { getNextDays } from "@utils/getNextDays";
-import { WeatherIconsKeysProps, weatherIcons } from "@utils/weatherIcons";
+import dayjs from 'dayjs';
+import { api } from './api';
+import { getNextDays } from '@utils/getNextDays';
+import { WeatherIconsKeysProps, weatherIcons } from '@utils/weatherIcons';
 
-import { DayProps } from "@components/Day";
-import { WeatherTodayProps } from "@components/WeatherToday";
-import { WeatherDetailsProps } from "@components/WeatherDetails";
+import { DayProps } from '@components/Day';
+import { WeatherTodayProps } from '@components/WeatherToday';
+import { WeatherDetailsProps } from '@components/WeatherDetails';
 
 export interface WeatherAPIResponseProps {
   list: {
@@ -18,32 +18,37 @@ export interface WeatherAPIResponseProps {
       feels_like: number;
       humidity: number;
       temp_kf: number;
-    },
+    };
     wind: {
       speed: number;
     };
     weather: {
       description: string;
       main: WeatherIconsKeysProps;
-    }[]
+    }[];
   }[];
 }
 
 type SearchCityWeatherProps = {
   latitude: number;
   longitude: number;
-}
+};
 
 export type WeatherResponseProps = {
   today: {
     weather: WeatherTodayProps;
     details: WeatherDetailsProps;
-  },
+  };
   nextDays: DayProps[];
-}
+};
 
-export async function getWeatherByCityService({ latitude, longitude }: SearchCityWeatherProps): Promise<WeatherResponseProps> {
-  const { data } = await api.get<WeatherAPIResponseProps>(`/forecast?lat=${latitude}&lon=${longitude}`);
+export async function getWeatherByCityService({
+  latitude,
+  longitude,
+}: SearchCityWeatherProps): Promise<WeatherResponseProps> {
+  const { data } = await api.get<WeatherAPIResponseProps>(
+    `/forecast?lat=${latitude}&lon=${longitude}`,
+  );
   const { main, weather, wind, pop } = data.list[0];
 
   const today = {
@@ -59,9 +64,9 @@ export async function getWeatherByCityService({ latitude, longitude }: SearchCit
       probability: `${Math.ceil(pop * 100)}%`,
       wind_speed: `${wind.speed}km/h`,
       humidity: `${main.humidity}%`,
-      temp_kf: `${Math.floor(main.temp_kf)}`
-    }
-  }
+      temp_kf: `${Math.floor(main.temp_kf)}`,
+    },
+  };
 
   const days = getNextDays();
   const daysAdded: string[] = [];
@@ -82,10 +87,10 @@ export async function getWeatherByCityService({ latitude, longitude }: SearchCit
         min: `${Math.floor(item.main.temp_min)}ºc`,
         max: `${Math.ceil(item.main.temp_max)}ºc`,
         weather: item.weather[0].description,
-        icon: details.icon_day
+        icon: details.icon_day,
       });
     }
   });
 
-  return { today, nextDays }
+  return { today, nextDays };
 }

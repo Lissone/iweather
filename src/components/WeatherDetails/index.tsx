@@ -43,18 +43,9 @@ export function WeatherDetails({ data }: Props) {
         value={data.wind_speed}
       />
 
-      <WeatherItem
-        icon={drop}
-        title="Umidade do ar"
-        value={data.humidity}
-      />
+      <WeatherItem icon={drop} title="Umidade do ar" value={data.humidity} />
 
-      <WeatherItem
-        icon={sun}
-        title="Índice UV"
-        value={data.temp_kf}
-        isLast
-      />
+      <WeatherItem icon={sun} title="Índice UV" value={data.temp_kf} isLast />
     </View>
   );
 }

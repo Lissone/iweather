@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 20
+    paddingVertical: 20,
   },
   borderBottom: {
     borderBottomWidth: 1,
@@ -17,11 +17,11 @@ export const styles = StyleSheet.create({
     color: theme.colors.gray_200,
     fontFamily: theme.fonts.bold,
     fontSize: 14,
-    marginLeft: 12
+    marginLeft: 12,
   },
   value: {
     color: theme.colors.gray_100,
     fontFamily: theme.fonts.bold,
-    fontSize: 16
+    fontSize: 16,
   },
 });

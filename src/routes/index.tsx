@@ -13,7 +13,13 @@ export function Routes() {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={{ flex: 1, paddingTop: insets.top, backgroundColor: theme.colors.gray_900 }}>
+    <View
+      style={{
+        flex: 1,
+        paddingTop: insets.top,
+        backgroundColor: theme.colors.gray_900,
+      }}
+    >
       <NavigationContainer>
         {city ? <Dashboard /> : <AppRoutes />}
       </NavigationContainer>

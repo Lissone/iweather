@@ -10,10 +10,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 16,
     fontFamily: theme.fonts.regular,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   input: {
     flex: 1,
     color: theme.colors.white,
-  }
+  },
 });

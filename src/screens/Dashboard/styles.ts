@@ -11,6 +11,6 @@ export const styles = StyleSheet.create({
   },
   scroll: {
     gap: 8,
-    paddingBottom: 32
-  }
+    paddingBottom: 32,
+  },
 });
