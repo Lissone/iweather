@@ -1,7 +1,7 @@
 import { waitFor, screen, act } from '@testing-library/react-native';
 import { saveStorageCity } from '@libs/asyncStorage/cityStorage';
 import { Routes } from '.';
-import { render } from '@__tests__/mocks/utils/customRender';
+import { render } from '@__tests__/utils/customRender';
 import { api } from '@services/api';
 import { mockWeatherAPIResponse } from '@__tests__/mocks/api/mockWeatherAPIResponse';
 
