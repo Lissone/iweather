@@ -38,6 +38,7 @@ During development, I learned more about automated testing of components in the 
 
 ## Demonstration
 
+https://github.com/user-attachments/assets/bd21ac3a-fbda-415b-a52c-e1f2e06112df
 
 ## Requirements
 
